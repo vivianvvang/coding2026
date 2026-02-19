@@ -21,6 +21,18 @@ def deque_usage():
     last = q[-1]
     len = len(q)
 
+def dict_usage():
+    d = {}
+    d["a"] = 1
+    d.keys()
+    d.items()
+
+from collections import defaultdict
+def defaultdict_usage():
+    counter = defaultdict(int)
+    graph = defaultdict(list)
+    topo = defaultdict(set)
+
 from collections import Counter
 # subclass of dict
 def counter():
@@ -31,4 +43,7 @@ def counter():
     print(c[1]) # return 2
     print(c[4]) # return 0, NO ERROR
     top2 = c.most_common(2) # return [(1, 2), (2, 1)]
-    print(c.keys)
+    print(c.keys())
+
+def lamda_usage():
+    words = ["cat", "apple"]
