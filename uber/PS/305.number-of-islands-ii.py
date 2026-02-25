@@ -3,6 +3,7 @@
 #
 # [305] Number of Islands II
 #
+from typing import List
 
 # @lc code=start
 class UnionFind:
