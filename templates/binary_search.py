@@ -1,3 +1,5 @@
+# https://leetcode.com/discuss/post/786126/python-powerful-ultimate-binary-search-t-rwv8/
+
 def binary_search(array) -> int:
     def condition(value) -> bool:
         pass
@@ -13,4 +15,7 @@ def binary_search(array) -> int:
             right = mid
         else:
             left = mid + 1
+    """
+    Consider whether to return left or left -1
+    """
     return left

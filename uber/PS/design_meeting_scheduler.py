@@ -24,11 +24,21 @@ class MeetingScheduler:
 
         # consider start time only
         l, r = 0, len(records)
+        # while l < r:
+        #     mid = (l + r) // 2
+        #     if records[mid][0] < start:
+        #         l = mid + 1
+        #     else:
+        #         r = mid
+        
+        # binary search using master template:
+        # looking for the minimal k value satisfying nums[k] >= target
+        # find the right postion to insert (which will push rest of elements + 1)
         while l < r:
             mid = (l + r) // 2
-            if records[mid][0] < start:
-                l = mid + 1
-            else:
+            if records[mid][0] >= start:
                 r = mid
+            else:
+                l = mid + 1
         return l
 
