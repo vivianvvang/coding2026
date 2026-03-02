@@ -6,13 +6,15 @@ class Counter:
     
     def put(self, time, ele):
         self.dt[ele].append(time)
+        # Calculate the earliest valid timestamp (the cutoff boundary)
         start = time - self.window if time - self.window >= 0 else 0
-        while self.dt[ele] is not None and self.dt[ele][0] < start:
+        # Remove all expired timestamps from the left
+        while self.dt[ele] and self.dt[ele][0] < start:
             self.dt[ele].popleft()
 
     def get_count(self, time, ele):
         start = time - self.window if time - self.window >= 0 else 0
-        while self.dt[ele] is not None and self.dt[ele][0] < start:
+        while self.dt[ele] and self.dt[ele][0] < start:
             self.dt[ele].popleft()
         return len(self.dt[ele])
 

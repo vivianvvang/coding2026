@@ -9,7 +9,7 @@ class CurrencyConverter:
     def __init__(self, fromArr: List[str], toArr: List[str], rateArr: List[float]):
         self.curr_map = DefaultDict(list)
         self.currency = {}
-        
+        # insert two way edges
         for i in range(len(fromArr)):
             f = fromArr[i]
             to = toArr[i]
@@ -23,7 +23,7 @@ class CurrencyConverter:
         
     def getBestRate(self, fr: str, to: str) -> float:
         res = -1
-        def _dfs(visited, node, goal, curr_rate):
+        def _backtrack(visited, node, goal, curr_rate):
             nonlocal res
             if node in visited:
                 return
@@ -33,10 +33,10 @@ class CurrencyConverter:
             for nei in self.curr_map[node]:
                 if node+nei not in self.currency:
                     continue
-                _dfs(visited, nei, goal, curr_rate * self.currency[node + nei])
+                _backtrack(visited, nei, goal, curr_rate * self.currency[node + nei])
             visited.remove(node)
 
-        _dfs(set(), fr, to, 1)
+        _backtrack(set(), fr, to, 1)
         return res
 
 fromArray = ["GBP","USD","USD","USD","CNY"]
