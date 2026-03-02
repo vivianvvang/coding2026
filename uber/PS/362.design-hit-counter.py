@@ -7,11 +7,12 @@
 # @lc code=start
 class HitCounter:
 
-    def __init__(self):
-        self.window = 300
+    def __init__(self, window = 300):
+        self.window = window
         self.times = [0] * 300
         self.hits = [0] * 300
 
+    # circular buffer 
     def hit(self, timestamp: int) -> None:
         idx = timestamp % self.window
         if self.times[idx] == timestamp:
