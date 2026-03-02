@@ -47,6 +47,7 @@ class Solution:
             return -1 
         return ans
             
+    # linear
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         m, n = binaryMatrix.dimensions()
         r, c = 0, n - 1

@@ -9,6 +9,7 @@ class Solution:
                     current[ch] = {}
                 current = current[ch]
             current['#'] = word
+        # insert all words into a trie
         for word in words:
             _insert(word)
 
@@ -22,6 +23,7 @@ class Solution:
             if board[x][y] == '#':
                 return
             ch = board[x][y]
+            # return if there's no such word
             if ch not in current:
                 return
             

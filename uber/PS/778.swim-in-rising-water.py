@@ -3,7 +3,8 @@ from typing import List
 
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
-        # keep a priority queue of which square we can walk in next. We always walk in the smallest one that is 4-directionally adjacent to ones we've visited.
+        # keep a priority queue of which square we can walk in next. 
+        # We always walk in the smallest one that is 4-directionally adjacent to ones we've visited.
         n = len(grid)
         hq = [(grid[0][0], (0, 0))] # starting point
         visited = set((0, 0))

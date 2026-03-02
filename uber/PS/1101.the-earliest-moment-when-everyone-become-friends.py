@@ -39,9 +39,12 @@ class UnionFind:
 class Solution:
     
     def earliestAcq(self, logs: List[List[int]], n: int) -> int:
+        # sort the events in chronological order.
         logs.sort(key=lambda x: x[0])
         uf = UnionFind(n)
+        # each individual as a separate group.
         group_cnt = n
+        
         for timestamp, a, b in logs:
             if uf.union(a, b):
                 group_cnt -= 1

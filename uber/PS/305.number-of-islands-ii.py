@@ -8,8 +8,8 @@ from typing import List
 # @lc code=start
 class UnionFind:
     def __init__(self, n: int):
-        self.count = 0 #ans
-        self.parent = [-1] * n
+        self.count = 0 # ans
+        self.parent = [-1] * n # parent isn't land yet
         self.height = [0] * n
 
     def find(self, x: int) -> int:
@@ -37,7 +37,7 @@ class UnionFind:
 class Solution:
 
     def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
-        def isLand(x, y, m, n):
+        def inbound(x, y, m, n):
             return x >= 0 and y >= 0 and x < m and y < n
     
         def flatten(x, y, m, n) -> int:
@@ -61,7 +61,7 @@ class Solution:
             for dir_x, dir_y in dirs:
                 nx, ny = x+dir_x, y+dir_y
                 nidx = flatten(nx, ny, m, n)
-                if isLand(nx, ny, m, n) and uf.parent[nidx] != -1:
+                if inbound(nx, ny, m, n) and uf.parent[nidx] != -1:
                     uf.union(idx, nidx)
             res.append(uf.count)
         

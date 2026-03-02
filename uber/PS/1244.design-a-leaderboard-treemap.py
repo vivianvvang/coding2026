@@ -10,7 +10,7 @@ class Leaderboard:
 
     def __init__(self):
         self.scores = {}
-        self.sortedScores = SortedDict()
+        self.sortedScores = SortedDict()  # key: score -> value: number of players
     
     #O(logN) 
     def addScore(self, playerId: int, score: int) -> None:
@@ -22,6 +22,7 @@ class Leaderboard:
             num_prev = self.sortedScores[-prev]
 
             if num_prev == 1:
+                # If the value has reached 0, remove the score entry.
                 del self.sortedScores[-prev]
             else:
                 self.sortedScores[-prev] = num_prev - 1

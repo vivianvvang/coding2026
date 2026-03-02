@@ -11,11 +11,14 @@ class Solution:
         # build adj list
         def sortByCharacter(a, b): 
             for i in range(min(len(a), len(b))):
+                # check first diff character, we can tell a[i] < b[i]
                 if a[i] != b[i]:
                     return (a[i], b[i])
             if len(a) > len(b):
+                # illegal
                 return ('*', '*')
             else:
+                # legal but useless
                 return('-', '-')
         
         indegree = { c: 0 for word in words for c in word }
@@ -48,9 +51,7 @@ class Solution:
                 if indegree[neighbor] == 0:
                     q.append(neighbor)
         
-        # for k, v in indegree.items():
-        #     if v != 0:
-        #         return ""
+
         if len(ans) < len(indegree.keys()):
             return ""
         return ans

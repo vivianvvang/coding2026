@@ -11,20 +11,24 @@ class Leaderboard:
         self.scores = {}
 
     def addScore(self, playerId: int, score: int) -> None:
+        # Simply update the dictionary with the new score for the player.
         if playerId in self.scores.keys():
             self.scores[playerId] += score
         else:
             self.scores[playerId] = score
 
+    # Heap for top-K
     # O(K) + O(NlogK) = O(NlogK)
     def top(self, K: int) -> int:
-        min_scores = list(self.scores.values())
-        min_scores = [ i * -1 for i in min_scores]
-        heapq.heapify(min_scores)
-        ans = 0
-        for i in range(K):
-            ans += -1 * heapq.heappop(min_scores)
-        return ans
+        heap = []
+        for x in self.scores.values():
+            heapq.heappush(heap, x)
+            if len(heap) > K:
+                heapq.heappop(heap)
+        res = 0
+        while heap:
+            res += heapq.heappop(heap)
+        return res
 
     def reset(self, playerId: int) -> None:
         self.scores[playerId] = 0
