@@ -16,7 +16,6 @@ class MeetingScheduler:
             if to_insert < len(records) and records[to_insert][0] < end:
                 continue
   
-            records.insert(to_insert, [start, end])
             return room
         return ""
 
