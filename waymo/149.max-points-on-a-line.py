@@ -12,7 +12,6 @@ class Solution:
         if len(points) <= 2:
             return len(points)
         def cal_slope(p1, p2):
-            slope, b = float("inf"), float("inf")
             x1, y1 = p1
             x2, y2 = p2
             if x1 - x2 == 0:
