@@ -25,13 +25,11 @@ class Solution:
                 elif grid[i][j] >= 'a' and grid[i][j] <= 'k':
                     keys.add(grid[i][j])
         
-        # state-space bfs
+        # state-space bfs: (row, col, key_status)
         while len(q) > 0:
             r, c, k_status, step = q.popleft()
             # should not visit same state twice 
             # if (r, c, k_status) in visited:
-            #     continue
-            # visited.add((r, c, k_status))
             
             for dr, dc in dirs:
                 nr, nc = r + dr, c + dc
