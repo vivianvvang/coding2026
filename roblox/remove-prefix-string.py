@@ -1,6 +1,5 @@
 from typing import List, Optional
-
-        
+  
 class Solution:
     def removePrefix(self, words: List[str]) -> List[str]:
         trie = {}
