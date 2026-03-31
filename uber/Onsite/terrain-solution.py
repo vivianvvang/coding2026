@@ -19,6 +19,25 @@ class UnionFind:
             self.size[root_i] += self.size[root_j]
 
 
+"""
+You are given: 
+an m x n integer matrix terrain,
+an array limits of size k.
+You must compute an array answer of size k such that for each limits[i]:
+Start at the top-left cell (0,0).
+
+Repeat:
+If limits[i] is strictly greater than the value of the current cell, then:
+You gain 1 point the first time you visit this cell.
+You may move to any adjacent cell (up, down, left, right).
+
+Otherwise:You gain no points. The process ends.
+After the process, answer[i] is the maximum points achievable.                       
+You are allowed to revisit cells multiple times, 
+but points are only earned on the first visit. 
+Return answer traversal ends once we meet a value in the grid 
+that is >= than current limit
+"""
 # $O(MN log MN)
 class TerrainSolution:
     def solution(self, terrain, limits):
@@ -29,10 +48,11 @@ class TerrainSolution:
         for r in range(m):
             for c in range(n):
                 cells.append((terrain[r][c], r, c))
+        # sort values in matrix
         cells.sort()
         cell_idx = 0
 
-        # 2. sort by value of limit
+        # 2. sort the limits
         sorted_queries = sorted(enumerate(limits), key =  lambda x: x[1])
 
         uf = UnionFind(m * n)
@@ -41,7 +61,7 @@ class TerrainSolution:
 
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
-        # 3. connect, from limit small to big
+        # 3. from limit small to big, union all nodes less than limit
         for limit_idx, limit in sorted_queries:
 
             # skip idx < cell_idx
