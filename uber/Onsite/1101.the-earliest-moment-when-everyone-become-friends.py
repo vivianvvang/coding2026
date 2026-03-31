@@ -61,7 +61,6 @@ class RideSystem:
         self.num_components = n         # 初始时每个人都是孤岛
 
     def add_block(self, u, v):
-        """记录 u 和 v 互相拉黑"""
         self.blocks[u].add(v)
         self.blocks[v].add(u)
 
