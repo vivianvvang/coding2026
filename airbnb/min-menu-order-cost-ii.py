@@ -1,5 +1,5 @@
 from typing import List, Optional
-
+# https://www.hack2hire.com/companies/airbnb/coding-questions/68b8f88983188776facc8fc8/practice?questionId=68b8f94083188776facc8fc9
 class Solution:
     def minCostToOrder(self, menu: List[List[str]], userWants: List[str]) -> List[List[str]]:
         initial_wants = tuple(sorted(userWants))
@@ -14,12 +14,13 @@ class Solution:
                 processed_menu.append((id, price, tuple(sorted(item_provided))))
             
         memo = {}
-
+        # (idx, items to buy) -> (cost, possible future paths)
         def dfs(idx, pending):
             if len(pending) == 0:
                 return (0, [[]]) # one availble path with no entry to take
             if idx == len(processed_menu):
-                return (float('inf'), [])
+                return (float('inf'), []) # no possible path
+            
             # check cache
             if (idx, pending) in memo:
                 return memo[(idx, pending)]
@@ -40,10 +41,12 @@ class Solution:
                 min_paths = paths_skip
             elif cost_skip > cost_take:
                 min_cost = cost_take
+                # add entry id to every possible future paths
                 min_paths = [[entry_id] + path for path in paths_take_tmp] 
             else:
                 min_cost = cost_skip
                 if min_cost != float('inf'):
+                    # Costs are equal. Merge the paths.
                     min_paths = paths_skip + [[entry_id] + path for path in paths_take_tmp]
             
             # add to cache

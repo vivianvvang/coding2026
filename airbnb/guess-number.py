@@ -1,3 +1,5 @@
+# https://www.hack2hire.com/companies/airbnb/coding-questions/68cdc7e53735a578b6f27eeb/practice?questionId=68cdc7ec3735a578b6f27eec
+
 class GuessServer:
     def __init__(self, secret):
         self.secret = secret

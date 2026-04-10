@@ -3,7 +3,7 @@
 #
 # [39] Combination Sum
 #
-
+from typing import List
 # @lc code=start
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
