@@ -1,5 +1,6 @@
 from typing import List, Optional
 from collections import defaultdict
+# https://www.hack2hire.com/companies/airbnb/coding-questions/68baf382b5314dcd938cba01/practice?questionId=68baf390b5314dcd938cba02 
 
 class Solution:
     def splitStayCombinations(self, listings: List[List[int]], start: int, end: int) -> List[List[int]]:
