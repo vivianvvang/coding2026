@@ -6,9 +6,9 @@ class Solution:
         processed_tasks = []
 
         '''
-        Sorting by deadlines ensures we march forward through time, 
-        while strictly keeping len(hq) <= deadline to prevent overbooking, 
-        forcing the min-heap to evict the cheapest tasks to reach maximum possible profit.
+        Greedy, Sort all tasks in descending order of profit
+        For each task in sorted order, try to assign it to the 
+        latest free slot from its deadline
         '''
         for task in tasks:
             name, ddl, p = task[0], int(task[1]), int(task[2])
