@@ -11,10 +11,9 @@ class BookingSystem:
             self.neighbors[neighborhood].sort(key=lambda x: x[0])
     
     def book(self, neighborhood: str, groupSize: int) -> List[str]:
-        # TODO: Implement book logic
         properties = self.neighbors[neighborhood]
         memo = {} 
-        #[key]: (pi, cap_to_book) 
+        #[key]: (property_idx, cap_to_book) 
         #[value]: （min total cap booked, list of properties booked）
 
         def dfs(idx, pending_cap):
@@ -48,7 +47,9 @@ class BookingSystem:
             else:
                 min_cap = cap_booked_skip
                 if min_cap != float('inf'):
-                    # if tie on both, prefer take than skip (so prioritize getting the houses that are listed earlier)
+                    # if tie on cost, first choose the option with fewer properties
+                    # if also tie on num of properties, prefer take than skip
+                    # so prioritize getting the houses that are listed earlier
                     min_properties = ([id] + properties_booked_take) if (len(properties_booked_take) + 1) <= len(properties_booked_skip) else properties_booked_skip
 
             memo[(idx, pending_cap)] = min_cap, min_properties

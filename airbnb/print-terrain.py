@@ -3,16 +3,6 @@ def terrain(numbers):
     height = max(numbers)
     n = len(numbers)
     res = [ [" "] * n for _ in range(height)]
-
-    # res_tmp = [ [" "] * height for _ in range(n)]
-    # for i in range(n):
-    #     for j in range(height):
-    #         if j < numbers[i]:
-    #             res_tmp[i][j] = '+'
-    # for i in range(height):
-    #     for j in range(n):
-    #         res[i][j] = res_tmp[j][height - i - 1]
-    # print(res)
     
     for i in range(height):
         for j in range(n):
@@ -28,7 +18,7 @@ def terrain_part2(numbers, waterAmount, column):
     
     n = len(numbers)
     while waterAmount > 0:
-        # go left:
+        # go left: found lowest idx and save it as best_col
         best_col = column
 
         l = column - 1

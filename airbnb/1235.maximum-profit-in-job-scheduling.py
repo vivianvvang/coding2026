@@ -15,11 +15,6 @@ class Solution:
         # memo[i]: starting from job i, max profit can earn
         
         def find_next(idx, lastEnd):
-            # while idx < n:
-            #     if jobs[idx][0] >= lastEnd:
-            #         return idx
-            #     idx += 1
-            # return -1
             l, r = idx, n
             while l < r:
                 mid = l + (r - l) // 2

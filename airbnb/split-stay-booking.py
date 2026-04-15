@@ -18,28 +18,24 @@ class Solution:
             return single_stays
         
         # Phase 2: split stays
-        prefix = defaultdict(list)
-        suffix = defaultdict(list)
+        prefix = defaultdict(list) #x -> listing that is available from [start, x]
+        suffix = defaultdict(list) #y -> listing that is available from [y, end]
         res = set()
 
-        for i, l in enumerate(listings): # N
-            for k in range(start, end): # D
-                # if set(range(start, k+1)).issubset(l): # create set: D 
-                #     prefix[k].append(i)
-                # if set(range(k, end)).issubset(l):
-                #     suffix[k].append(i)
-                if k in l: 
-                    prefix[k].append(i)
+        for i, listing in enumerate(listings): # N
+            for p in range(start, end): # D
+                if p in listing: 
+                    prefix[p].append(i)
                 else:
                     break
-            for m in range(end, start, -1):
-                if m in l:
-                    suffix[m].append(i)
+            for s in range(end, start, -1):
+                if s in listing:
+                    suffix[s].append(i)
                 else:
                     break
         
-        for k in range(start, end):
-            first, sec = prefix[k], suffix[k+1]
+        for day in range(start, end):
+            first, sec = prefix[day], suffix[day + 1]
             for i in first:
                 for j in sec:
                     if i != j:
