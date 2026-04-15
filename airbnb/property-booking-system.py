@@ -1,6 +1,7 @@
 from typing import List, Optional
 from collections import defaultdict
 
+#https://www.hack2hire.com/companies/airbnb/coding-questions/68b975288c4a0a9996afdd78/practice?questionId=68b975348c4a0a9996afdd79
 class BookingSystem:
     def __init__(self, properties: List[List[str]]):
         self.neighbors = defaultdict(list)
